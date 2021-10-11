@@ -1,0 +1,15 @@
+58f20c33224a2884ccd346aba51a7445 *DESCRIPTION
+158c4539f752877d39f044966ef6e5bd *LICENSE
+26cb0db6a7e24ce91aa4215f13bd4ba9 *NAMESPACE
+2876fa56e3a1f990976ab32006e338b6 *NEWS.md
+09e3008a63d6ba807d7a12069c9b227e *R/fipio.R
+ce4d2a332738644d134ad094b450fb4d *R/sysdata.rda
+4f288e7fa3017b1adc1e44b46039e1f5 *README.md
+0cfe87c7615f686b7294e09b891e6b20 *man/fips_abbr.Rd
+419435baa5bd397f37f5bc5c0efa8898 *man/fips_county.Rd
+35c4d26bae90ef0abed36884502c1adf *man/fips_geometry.Rd
+da12c71683ccca0c40e432fb9664cf1d *man/fips_metadata.Rd
+63e188bc3392bca428561f1110dc3469 *man/fips_state.Rd
+85dc339b22793159ae61e853bde6766f *tests/testthat.R
+cccf876662b0a9565b17712bc401c11b *tests/testthat/setup-fipio.R
+55e32c9ea0bc0999d924e815ca0b3314 *tests/testthat/test-fipio.R
