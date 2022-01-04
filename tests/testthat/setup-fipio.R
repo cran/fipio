@@ -1,3 +1,9 @@
+geolocate_data <- readRDS(system.file(
+    "testdata",
+    "testdata.rds",
+    package = "fipio")
+)
+
 local_fipio <- function(fip_code, state_abbr, state_name, county_name) {
 
     multi_test <- if (length(fip_code) > 1) TRUE else FALSE
@@ -6,10 +12,12 @@ local_fipio <- function(fip_code, state_abbr, state_name, county_name) {
 
     descs <- if (multi_test) {
         c("fipio functions return correct information for multiple fips",
-          "fipio geometry returns correct information for multiple fips")
+          "fipio geometry returns correct information for multiple fips",
+          "fipio as_fips returns correct information for multiple descriptions")
     } else {
         c(paste("fipio functions return correct information for fip", fip_code),
-          paste("fipio geometry returns correct information for fip", fip_code))
+          paste("fipio geometry returns correct information for fip", fip_code),
+          "fipio as_fips returns correct information for a given description")
     }
 
     testthat::test_that(descs[1], {
@@ -17,18 +25,36 @@ local_fipio <- function(fip_code, state_abbr, state_name, county_name) {
         expect_abbr(fip_code, state_abbr)
         expect_state(state_code, state_name)
         expect_state(fip_code, state_name)
-        expect_county(fip_code, county_name)
+        expect_county(
+            fip_code,
+            ifelse(
+                nchar(fip_code) == 2,
+                NA,
+                county_name
+            )
+        )
         expect_metadata(state_code, state_name)
-        expect_metadata(fip_code, county_name)
+        expect_metadata(
+            fip_code,
+            ifelse(
+                nchar(fip_code) == 2,
+                state_name,
+                county_name
+            )
+        )
     })
 
     testthat::test_that(descs[2], {
-        testthat::skip_if_not(
-            requireNamespace("sfheaders", quietly = TRUE),
-            message = "`sfheaders` is not available."
-        )
-
         expect_geometry_class(fip_code)
+    })
+
+    testthat::test_that(descs[3], {
+        expect_fips(state_name, county_name, fip_code)
+        expect_fips(state_abbr, county_name, fip_code)
+        expect_fips(toupper(state_name), county_name, fip_code)
+        expect_fips(toupper(state_abbr), county_name, fip_code)
+        expect_fips(tolower(state_name), county_name, fip_code)
+        expect_fips(tolower(state_abbr), county_name, fip_code)
     })
 }
 
@@ -49,22 +75,16 @@ expect_metadata <- function(fip, expected) {
 
     testthat::expect_s3_class(meta, "data.frame")
 
-    if (all(nchar(fip) == 2)) {
-        exp_names <- c("state_code", "state_abbr", "state_name", "fip_code")
-
-        testthat::expect_equal(meta$state_name, expected)
-    } else {
-        exp_names <- c("state_code", "county_code", "fip_code",
-                    "state_abbr", "state_name", "county_name")
-
-        testthat::expect_equal(meta$county_name, expected)
-    }
+    testthat::expect_equal(meta$name, expected)
+    exp_names <- c(
+        "state_region", "state_division", "feature_code", "state_name",
+        "state_abbr", "name", "fip_class", "tiger_class", "combined_area_code",
+        "metropolitan_area_code", "functional_status", "land_area", "water_area",
+        "fip_code"
+    )
 
     testthat::expect_named(meta, exp_names)
-    testthat::expect_equal(
-        ifelse(is.na(meta$fip_code), meta$state_code, meta$fip_code),
-        fip
-    )
+    testthat::expect_equal(meta$fip_code, fip)
 }
 
 expect_geometry_class <- function(fip) {
@@ -93,4 +113,22 @@ expect_geometry_class <- function(fip) {
             )
         }
     })
+}
+
+expect_fips <- function(state, county, expected) {
+    if (missing(county)) county <- NULL
+    testthat::expect_equal(
+        fipio::as_fips(state = state, county = county),
+        expected
+    )
+}
+
+expect_match_assignment <- function(expected) {
+    temp_env <- testthat::test_env("fipio")
+    assign("match",
+           if (.has_fastmatch()) fastmatch::fmatch else base::match,
+           pos = temp_env)
+    fname <- getNamespaceName(environment(get("match", pos = temp_env)))[[1]]
+    testthat::expect_equal(fname, expected)
+    rm(temp_env)
 }
