@@ -1,13 +1,13 @@
-f3e604c5f74de433bbfa17192d9396c1 *DESCRIPTION
+c933ee49b39a766f00a01e479d4d4039 *DESCRIPTION
 158c4539f752877d39f044966ef6e5bd *LICENSE
 6f761fef6d075d3aea97ee4f334893ab *NAMESPACE
-6b6e0d529942f92bfd4c730a0e0951c5 *NEWS.md
-482a1ebd3efab51b4e500fbe9316da52 *R/geolocate.R
-cb50f0791f93599a3c6d67c88cf24992 *R/internals.R
-560d519d32871b7955b619b6e661cec9 *R/lookup.R
+b742b80a3c02db2eb5beda8b4e1d0b25 *NEWS.md
+0230f6f3cce3f2254f5fbef5dfb543cb *R/geolocate.R
+d47f07dec3ea2ff5906073dcf2c32db7 *R/internals.R
+44e412d2af69b89b426de8f0a5335289 *R/lookup.R
 05d770167aa11eee026918f3aaefde57 *R/sysdata.rda
 99618eeef575292559d6719fe4a45c55 *R/zzz.R
-032f0e8728f3972eabd7fb1befe28d9f *README.md
+b144fa997ce1bf3ce4bb869aabcfc6c0 *README.md
 b4fbde67c9e7eff2a45f7d234194cf9b *inst/testdata/testdata.rds
 0dc44733c4d08515fc1b0b826eb652e0 *man/as_fips.Rd
 f2978e816f4c6cf65f0e968929cb8b57 *man/coords_to_fips.Rd
@@ -21,5 +21,5 @@ ab937b3d20ea923df661c7cfcc9c3f8e *man/fips_metadata.Rd
 5a40e43cb15a52e0219a51973e5ade8b *man/fips_state.Rd
 f00ab38c4599c1c804f330dd58abffbc *man/using_fastmatch.Rd
 85dc339b22793159ae61e853bde6766f *tests/testthat.R
-6af7e6828312e4160d4670a1f3239229 *tests/testthat/setup-fipio.R
-1241ee2786d1d55185d803e64f21b5d5 *tests/testthat/test-fipio.R
+45ac045d5867924d58d6a3b76ec6dd8d *tests/testthat/setup-fipio.R
+f24aab3b0cf24a4d59018ed44713cf3f *tests/testthat/test-fipio.R

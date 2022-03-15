@@ -50,6 +50,10 @@ testthat::test_that("as_fips edge cases", {
 
     expect_fips("CA", "fakecounty", as.character(NA))
 
+    expect_fips("CA",
+                c("San Luis Obispo", "Santa Barbara",   "Ventura"),
+                c("06079", "06083", "06111"))
+
     testthat::expect_error(fipio::as_fips())
     testthat::expect_error(fipio::as_fips(""))
     testthat::expect_error(fipio::as_fips(NULL))
@@ -203,5 +207,35 @@ testthat::test_that("fipio geolocates on `sf` classes", {
     testthat::expect_identical(
         fipio::coords_to_fips(geolocate_data[indices[1], ]$geometry),
         geolocate_data$FIPS[indices[1]]
+    )
+})
+
+testthat::test_that("fipio returns NA for nonexistant states/counties", {
+    testthat::expect_equal(
+        fipio::as_fips(state = "FAKE"),
+        NA_character_
+    )
+
+    testthat::expect_equal(
+        fipio::as_fips(state = c("CA", "FAKE", "north carolina")),
+        c("06", NA_character_, "37")
+    )
+
+    testthat::expect_equal(
+        fipio::as_fips(state = "FAKE", county = "FAKE"),
+        NA_character_
+    )
+
+    testthat::expect_equal(
+        fipio::as_fips(state = "CA", county = c("FAKE", "Alameda")),
+        c(NA_character_, "06001")
+    )
+
+    testthat::expect_equal(
+        fipio::as_fips(
+            state = c("RI", "CA"),
+            county = c("bristol", "FAKE", "Alameda")
+        ),
+        c("44001", NA_character_, "06001")
     )
 })

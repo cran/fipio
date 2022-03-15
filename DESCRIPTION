@@ -1,13 +1,18 @@
 Package: fipio
 Title: Lightweight Federal Information Processing System (FIPS) Code
         Information Retrieval
-Version: 1.1.0
+Version: 1.1.1
 Authors@R: 
     c(person(given = "Justin",
              family = "Singh-Mohudpur",
              role = c("aut", "cre"),
              email = "justin@justinsingh.me",
              comment = c(ORCID = "0000-0002-5233-5799")),
+      person(given = "Mike",
+             family = "Johnson",
+             role = "ctb",
+             email = "mikecp11@gmail.com",
+             comment = c(ORCID = "0000-0002-5288-8350")),
       person(given = "Urban Flooding Open Knowledge Network (UF-OKN)",
              role = c("fnd")))
 Description: Provides a lightweight suite
@@ -23,10 +28,11 @@ Suggests: testthat (>= 3.0.0), mockery (>= 0.4.2), covr, fastmatch (>=
         1.0.0)
 Config/testthat/edition: 3
 NeedsCompilation: no
-Packaged: 2022-01-04 01:41:55 UTC; jsinghm
+Packaged: 2022-03-15 18:05:49 UTC; jsinghm
 Author: Justin Singh-Mohudpur [aut, cre]
     (<https://orcid.org/0000-0002-5233-5799>),
+  Mike Johnson [ctb] (<https://orcid.org/0000-0002-5288-8350>),
   Urban Flooding Open Knowledge Network (UF-OKN) [fnd]
 Maintainer: Justin Singh-Mohudpur <justin@justinsingh.me>
 Repository: CRAN
-Date/Publication: 2022-01-04 09:20:04 UTC
+Date/Publication: 2022-03-15 18:40:02 UTC
