@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# fipio <a href="https://github.com/UFOKN/fipio"><img src="man/figures/logo.png" align="right" width="25%"/></a>
+# fipio <a href="https://github.com/program--/fipio"><img src="man/figures/logo.png" align="right" width="25%"/></a>
 
 <!-- badges: start -->
 
@@ -9,10 +9,10 @@
 status](https://www.r-pkg.org/badges/version/fipio)](https://CRAN.R-project.org/package=fipio)
 [![CRAN
 downloads](https://cranlogs.r-pkg.org/badges/fipio)](https://CRAN.R-project.org/package=fipio)
-[![codecov](https://codecov.io/gh/UFOKN/fipio/branch/master/graph/badge.svg)](https://app.codecov.io/gh/UFOKN/fipio)
-[![R-CMD-check](https://github.com/UFOKN/fipio/workflows/R-CMD-check/badge.svg)](https://github.com/UFOKN/fipio/actions)
+[![codecov](https://codecov.io/gh/program--/fipio/graph/badge.svg?token=1ODDHARQM1)](https://app.codecov.io/gh/program--/fipio)
+[![R-CMD-check](https://github.com/program--/fipio/workflows/R-CMD-check/badge.svg)](https://github.com/program--/fipio/actions)
 [![MIT
-License](https://img.shields.io/badge/license-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+License](https://img.shields.io/badge/license-MIT-blue.svg)](https://opensource.org/license/mit/)
 <!-- badges: end -->
 
 `fipio` is a **lightweight** package that makes it easy to get
@@ -31,10 +31,10 @@ or the development version with `pak` or `remotes`:
 
 ``` r
 # Using `pak`
-pak::pkg_install("UFOKN/fipio")
+pak::pkg_install("program--/fipio")
 
 # Using `remotes`
-remotes::install_github("UFOKN/fipio")
+remotes::install_github("program--/fipio")
 ```
 
 ## Usage
